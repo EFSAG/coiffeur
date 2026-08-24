@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Nuance — Coiffeursalon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#faf7fc;
+    --paper-soft:#f1e6f9;
+    --paper-dim:#e9d9f5;
+    --ink:#2c1b3d;
+    --body:#5b4a6b;
+    --violet-deep:#5b2a86;
+    --violet:#8b3fd1;
+    --orchid:#b57eea;
+    --lilac:#dcc6f5;
+    --mauve:#e9d9f5;
+    --radius:3px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:'Work Sans',sans-serif;line-height:1.55;
+    padding-bottom:0;
+  }
+  h1,h2,h3{font-family:'Bodoni Moda',serif;font-weight:500;margin:0;}
+  a{color:inherit;}
+  p{color:var(--body);}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important;}}
+
+  header{
+    position:sticky;top:0;z-index:60;
+    background:rgba(250,247,252,0.92);backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(91,42,134,0.12);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+  .logo{font-family:'Bodoni Moda',serif;font-size:1.3rem;letter-spacing:0.02em;color:var(--ink);}
+  .logo span{font-style:italic;color:var(--violet);}
+  nav ul{list-style:none;display:flex;gap:30px;margin:0;padding:0;font-size:0.9rem;letter-spacing:0.02em;}
+  nav ul a{text-decoration:none;opacity:0.75;transition:opacity .2s;color:var(--ink);}
+  nav ul a:hover{opacity:1;}
+  .cta-btn{
+    background:var(--violet-deep);color:var(--paper);
+    padding:11px 22px;border-radius:var(--radius);text-decoration:none;
+    font-size:0.86rem;letter-spacing:0.03em;font-weight:500;
+    border:1px solid var(--violet-deep);transition:all .2s;display:inline-block;
+  }
+  .cta-btn:hover{background:var(--violet);border-color:var(--violet);}
+
+  /* HERO */
+  .hero{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-soft) 100%);color:var(--ink);padding:76px 0 0;overflow:hidden;}
+  .hero-inner{padding-bottom:0;}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;padding-bottom:48px;}
+  .eyebrow{font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--violet);display:block;margin-bottom:16px;}
+  .hero h1{font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.02;color:var(--ink);}
+  .hero h1 em{color:var(--violet-deep);font-style:italic;}
+  .hero p{margin-top:20px;max-width:38ch;color:var(--body);font-size:1.02rem;}
+  .hero-actions{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;}
+  .cta-outline{
+    background:transparent;color:var(--ink);border:1px solid rgba(91,42,134,0.35);
+    padding:11px 22px;border-radius:var(--radius);text-decoration:none;font-size:0.86rem;
+  }
+  .cta-outline:hover{border-color:var(--violet-deep);}
+
+  .hero-photo{
+    border-radius:8px;overflow:hidden;
+    box-shadow:0 24px 60px -20px rgba(91,42,134,0.35);
+    aspect-ratio:4/5;
+  }
+  .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* SWATCH STRIP -- signature nav */
+  .strip{background:var(--paper-dim);padding:0;}
+  .strip-row{display:flex;}
+  .strip-item{
+    flex:1;padding:14px 10px;text-align:center;
+    font-size:0.76rem;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--body);border-top:3px solid transparent;
+    text-decoration:none;transition:all .2s;
+  }
+  .strip-item:hover{color:var(--ink);}
+  .strip-item.s1{border-top-color:var(--violet-deep);}
+  .strip-item.s2{border-top-color:var(--violet);}
+  .strip-item.s3{border-top-color:var(--orchid);}
+  .strip-item.s4{border-top-color:var(--lilac);}
+
+  /* SERVICES */
+  .services{padding:88px 0 60px;}
+  .section-head{max-width:600px;margin-bottom:48px;}
+  .section-head .eyebrow{color:var(--violet);}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.3rem);}
+  .section-head p{margin-top:14px;color:var(--body);max-width:52ch;}
+
+  .service-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(91,42,134,0.14);border:1px solid rgba(91,42,134,0.14);}
+  .cat{background:var(--paper);padding:26px 20px;}
+  .cat .chip{width:26px;height:26px;border-radius:50%;margin-bottom:16px;}
+  .cat.c1 .chip{background:var(--violet-deep);}
+  .cat.c2 .chip{background:var(--violet);}
+  .cat.c3 .chip{background:var(--orchid);}
+  .cat.c4 .chip{background:var(--lilac);}
+  .cat h3{font-size:1.05rem;margin-bottom:12px;}
+  .cat ul{list-style:none;padding:0;margin:0;font-size:0.88rem;color:var(--body);}
+  .cat li{display:flex;justify-content:space-between;padding:7px 0;border-top:1px solid rgba(91,42,134,0.1);}
+  .cat li:first-child{border-top:none;}
+  .cat li span:last-child{font-family:'Work Sans';color:var(--ink);font-weight:500;}
+
+  /* GALLERY */
+  .gallery{background:var(--paper-dim);padding:80px 0;}
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px;}
+  .gtile{aspect-ratio:3/4;border-radius:8px;position:relative;overflow:hidden;background:var(--mauve);}
+  .gtile img{width:100%;height:100%;object-fit:cover;display:block;}
+  .gtile span{
+    position:absolute;bottom:12px;left:12px;color:#fff;
+    font-size:0.74rem;letter-spacing:0.05em;text-transform:uppercase;
+    text-shadow:0 1px 6px rgba(44,27,61,0.6);
+  }
+  .g4{background:linear-gradient(200deg,var(--lilac),var(--orchid));display:flex;align-items:center;justify-content:center;}
+  .g4 .g4-label{position:static;text-shadow:none;color:var(--violet-deep);font-family:'Bodoni Moda',serif;font-size:1.1rem;text-align:center;padding:0 16px;}
+
+  /* BOOKING */
+  .booking{background:var(--paper-soft);color:var(--ink);padding:88px 0 110px;}
+  .booking-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;}
+  .booking-info h2{color:var(--ink);font-size:clamp(1.8rem,3vw,2.3rem);}
+  .booking-info p{margin-top:16px;color:var(--body);max-width:36ch;}
+  .booking-info .hours{margin-top:32px;font-size:0.9rem;color:var(--violet-deep);line-height:2;}
+
+  .chip-select{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+  .chip-opt{
+    padding:9px 16px;border-radius:20px;border:1px solid rgba(91,42,134,0.3);
+    font-size:0.82rem;cursor:pointer;background:var(--paper);color:var(--ink);
+    transition:all .2s;
+  }
+  .chip-opt.active{background:var(--violet-deep);border-color:var(--violet-deep);color:#fff;}
+  form{display:grid;gap:18px;margin-top:6px;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  label{font-size:0.76rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--violet-deep);display:block;margin-bottom:7px;}
+  input,textarea{
+    width:100%;background:var(--paper);border:1px solid rgba(91,42,134,0.28);
+    color:var(--ink);padding:12px 14px;border-radius:var(--radius);font-family:'Work Sans';font-size:0.95rem;
+  }
+  input::placeholder,textarea::placeholder{color:#a692ba;}
+  input:focus,textarea:focus{outline:2px solid var(--violet);outline-offset:1px;border-color:var(--violet);}
+  textarea{min-height:80px;resize:vertical;}
+  .submit-btn{
+    background:var(--violet-deep);color:#fff;border:none;padding:14px 26px;
+    border-radius:var(--radius);font-size:0.95rem;font-weight:600;cursor:pointer;
+    transition:background .2s;justify-self:start;
+  }
+  .submit-btn:hover{background:var(--violet);}
+  .success{display:none;padding:16px 18px;background:rgba(139,63,209,0.1);border:1px solid var(--violet);border-radius:var(--radius);color:var(--violet-deep);font-size:0.92rem;}
+  .success.show{display:block;}
+  form.hidden{display:none;}
+
+  footer{background:var(--paper);border-top:1px solid rgba(91,42,134,0.12);color:var(--body);padding:36px 0 110px;}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;font-size:0.84rem;}
+  .foot-grid strong{color:var(--ink);}
+
+  /* MOBILE STICKY CTA */
+  .mobile-cta{
+    display:none;position:fixed;bottom:0;left:0;right:0;z-index:80;
+    background:var(--paper);border-top:1px solid rgba(91,42,134,0.18);
+    padding:12px 16px;gap:10px;
+    box-shadow:0 -6px 20px rgba(91,42,134,0.08);
+  }
+  .mobile-cta a{
+    flex:1;text-align:center;padding:13px 0;border-radius:var(--radius);
+    font-size:0.86rem;letter-spacing:0.02em;text-decoration:none;font-weight:600;
+  }
+  .mobile-cta .call{border:1px solid rgba(91,42,134,0.35);color:var(--ink);}
+  .mobile-cta .book{background:var(--violet-deep);color:#fff;}
+
+  @media (max-width:860px){
+    nav ul{display:none;}
+    .hero .wrap{grid-template-columns:1fr;padding-bottom:36px;}
+    .strip-row{flex-wrap:wrap;}
+    .strip-item{flex:1 1 50%;}
+    .service-cats{grid-template-columns:1fr 1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .booking-grid{grid-template-columns:1fr;gap:36px;}
+    .row2{grid-template-columns:1fr;}
+    header .cta-btn{display:none;}
+    .mobile-cta{display:flex;}
+    body{padding-bottom:0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">Studio <span>Nuance</span></div>
+    <nav><ul>
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#buchen">Termin</a></li>
+    </ul></nav>
+    <a href="#buchen" class="cta-btn">Termin buchen</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Coiffeursalon · St. Gallen</span>
+      <h1>Farbe ist<br>eine <em>Entscheidung.</em></h1>
+      <p>Schnitt, Farbe und Styling im Studio Nuance — persönlich beraten, präzise umgesetzt. Buchung in unter einer Minute.</p>
+      <div class="hero-actions">
+        <a href="#buchen" class="cta-btn">Termin sichern</a>
+        <a href="#galerie" class="cta-outline">Galerie ansehen</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1637777277337-f114350fb088?fm=jpg&q=80&w=900&auto=format&fit=crop" alt="Modernes Salon-Interieur mit violettem Licht" loading="lazy">
+    </div>
+  </div>
+  <div class="strip">
+    <div class="strip-row">
+      <a href="#leistungen" class="strip-item s1">Damen</a>
+      <a href="#leistungen" class="strip-item s2">Herren</a>
+      <a href="#leistungen" class="strip-item s3">Coloration</a>
+      <a href="#leistungen" class="strip-item s4">Styling</a>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="leistungen">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Leistungen</span>
+      <h2>Vier Kategorien, klare Preise</h2>
+      <p>Alle Preise inkl. Beratung. Bei Erstbesuch empfehlen wir 15 Minuten Vorlaufzeit für die Farbberatung.</p>
+    </div>
+    <div class="service-cats">
+      <div class="cat c1">
+        <div class="chip"></div>
+        <h3>Damen</h3>
+        <ul>
+          <li><span>Waschen, Schneiden, Föhnen</span><span>ab 89</span></li>
+          <li><span>Beratung &amp; Schnitt</span><span>ab 65</span></li>
+          <li><span>Styling / Hochsteckfrisur</span><span>ab 75</span></li>
+        </ul>
+      </div>
+      <div class="cat c2">
+        <div class="chip"></div>
+        <h3>Herren</h3>
+        <ul>
+          <li><span>Waschen, Schneiden, Föhnen</span><span>ab 49</span></li>
+          <li><span>Bart trimmen</span><span>ab 25</span></li>
+          <li><span>Komplettpaket</span><span>ab 65</span></li>
+        </ul>
+      </div>
+      <div class="cat c3">
+        <div class="chip"></div>
+        <h3>Coloration</h3>
+        <ul>
+          <li><span>Ansatzfarbe</span><span>ab 70</span></li>
+          <li><span>Balayage</span><span>ab 160</span></li>
+          <li><span>Strähnen komplett</span><span>ab 140</span></li>
+        </ul>
+      </div>
+      <div class="cat c4">
+        <div class="chip"></div>
+        <h3>Styling</h3>
+        <ul>
+          <li><span>Event-Styling</span><span>ab 60</span></li>
+          <li><span>Braut-Styling</span><span>ab 150</span></li>
+          <li><span>Keratin-Glättung</span><span>ab 180</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="galerie">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Galerie</span>
+      <h2>Aktuelle Arbeiten aus dem Studio</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gtile">
+        <img src="https://images.unsplash.com/photo-1574773004910-1eeaabb62b55?fm=jpg&q=80&w=700&auto=format&fit=crop" alt="Violette Coloration" loading="lazy">
+        <span>Violet Gloss</span>
+      </div>
+      <div class="gtile">
+        <img src="https://images.unsplash.com/photo-1700760934268-8aa0ef52ce0a?fm=jpg&q=80&w=700&auto=format&fit=crop" alt="Präzisionsschnitt im Studio" loading="lazy">
+        <span>Präzisionsschnitt</span>
+      </div>
+      <div class="gtile">
+        <img src="https://images.unsplash.com/photo-1637777277337-f114350fb088?fm=jpg&q=80&w=700&auto=format&fit=crop" alt="Salon-Interieur" loading="lazy">
+        <span>Unser Studio</span>
+      </div>
+      <div class="gtile g4"><span class="g4-label">Lilac<br>Balayage</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="buchen">
+  <div class="wrap booking-grid">
+    <div class="booking-info">
+      <span class="eyebrow">Termin buchen</span>
+      <h2>Kein Konto, keine App.</h2>
+      <p>Wunschservice wählen, Angaben ausfüllen, absenden. Wir bestätigen den Termin per WhatsApp oder Telefon.</p>
+      <div class="hours">
+        DI–FR&nbsp;&nbsp;&nbsp;09:00–19:00<br>
+        SA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;09:00–16:00<br>
+        MO/SO&nbsp;&nbsp;geschlossen
+      </div>
+    </div>
+    <div>
+      <div class="success" id="successMsg">Danke! Wir bestätigen deinen Wunschtermin in Kürze per WhatsApp oder Telefon.</div>
+      <form id="bookForm">
+        <div>
+          <label>Service</label>
+          <div class="chip-select" id="chipSelect">
+            <button type="button" class="chip-opt active" data-val="Damen">Damen</button>
+            <button type="button" class="chip-opt" data-val="Herren">Herren</button>
+            <button type="button" class="chip-opt" data-val="Coloration">Coloration</button>
+            <button type="button" class="chip-opt" data-val="Styling">Styling</button>
+          </div>
+        </div>
+        <div class="row2">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Vor- und Nachname" required>
+          </div>
+          <div>
+            <label for="phone">Telefon / WhatsApp</label>
+            <input id="phone" type="tel" placeholder="078 000 00 00" required>
+          </div>
+        </div>
+        <div>
+          <label for="wunsch">Wunschtermin</label>
+          <input id="wunsch" type="text" placeholder="z. B. Sa. vormittags">
+        </div>
+        <div>
+          <label for="message">Nachricht (optional)</label>
+          <textarea id="message" placeholder="Wünsche zu Farbe, Schnitt oder Stylistin/Stylist"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Termin anfragen</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div><strong>Studio Nuance</strong><br>Multergasse 8, 9000 St. Gallen</div>
+    <div><strong>Kontakt</strong><br>071 000 00 00<br>hallo@studio-nuance.ch</div>
+    <div><strong>Folgen</strong><br>@studio.nuance</div>
+  </div>
+</footer>
+
+<div class="mobile-cta">
+  <a href="tel:+41710000000" class="call">Anrufen</a>
+  <a href="#buchen" class="book">Termin buchen</a>
+</div>
+
+<script>
+  document.querySelectorAll('.chip-opt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.chip-opt').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+  document.getElementById('bookForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    this.classList.add('hidden');
+    document.getElementById('successMsg').classList.add('show');
+  });
+</script>
+
+</body>
+</html>
